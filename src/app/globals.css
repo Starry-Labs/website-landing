@@ -1,26 +1,117 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: 240 33% 13%;
+    --foreground: 0 0% 100%;
+    
+    --card: 240 42% 20%;
+    --card-foreground: 0 0% 100%;
+    
+    --popover: 240 42% 20%;
+    --popover-foreground: 0 0% 100%;
+    
+    --primary: 260 36% 68%;
+    --primary-foreground: 0 0% 100%;
+    
+    --secondary: 260 20% 30%;
+    --secondary-foreground: 0 0% 100%;
+    
+    --muted: 240 27% 27%;
+    --muted-foreground: 0 0% 80%;
+    
+    --accent: 260 27% 40%;
+    --accent-foreground: 0 0% 100%;
+    
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 0 0% 100%;
+    
+    --border: 240 33% 25%;
+    --input: 240 33% 25%;
+    --ring: 260 36% 68%;
+    
+    --radius: 0.75rem;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-border;
+  }
+  
+  body {
+    @apply bg-[#0f0e33] text-[rgba(255,255,255,0.8)] font-sans;
+    background-image: url('/images/noise-pattern.png');
+    background-blend-mode: overlay;
+    background-size: 200px;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-serif;
+  }
+  
+
+  .nav-link {
+    @apply cursor-pointer text-[rgba(255,255,255,0.8)] hover:text-[rgba(255,255,255,0.8)] transition-colors;
+  }
+  
+  .star {
+    @apply absolute rounded-full bg-white;
+    box-shadow: 0 0 10px 2px rgba(255, 255, 255, 0.4);
+    animation: twinkle 4s infinite ease-in-out;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% {
+      opacity: 0.2;
+      transform: scale(0.8);
+    }
+    50% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  
+  .cosmic-glow {
+    @apply relative;
+  }
+  
+  .cosmic-glow::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-purple-500/20 to-blue-500/20 blur-xl -z-10 rounded-3xl;
+    transform: scale(0.9) translateY(5%);
+  }
+  
+  .planet-ring {
+    @apply absolute rounded-full border-2 border-purple-500/20 border-dashed;
+    animation: rotate 120s linear infinite;
+  }
+  
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-[#0f0e33];
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-purple-900/50 rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-purple-800/50;
+  }
 }
