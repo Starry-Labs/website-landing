@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   :root {
@@ -38,11 +36,11 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   
   body {
-    @apply bg-[#0f0e33] text-[rgba(255,255,255,0.8)] font-sans;
+    @apply bg-[#0f0e33] text-white font-sans;
     background-image: url('/images/noise-pattern.png');
     background-blend-mode: overlay;
     background-size: 200px;
@@ -54,7 +52,7 @@
   
 
   .nav-link {
-    @apply cursor-pointer text-[rgba(255,255,255,0.8)] hover:text-[rgba(255,255,255,0.8)] transition-colors;
+    @apply cursor-pointer text-white hover:text-white transition-colors;
   }
   
   .star {

@@ -3,8 +3,6 @@ const nextConfig = {
   images: {
     domains: ["images.unsplash.com", "firebasestorage.googleapis.com"],
   },
-  // Enable optimization for Google Fonts/Typefaces
-  optimizeFonts: true,
   // Configure redirects
   async redirects() {
     return [

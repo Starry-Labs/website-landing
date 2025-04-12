@@ -19,6 +19,7 @@ const config: Config = {
     },
     extend: {
       colors: {
+        white: "#ffffff",
         starry: {
           dark: "#0f0e33",
           medium: "#151442",
