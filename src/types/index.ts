@@ -1,8 +1,10 @@
+import { ReactNode } from "react";
+
 export interface Feature {
   id: number;
   title: string;
   description: string;
-  icon: string;
+  icon: ReactNode;
 }
 
 export interface AppScreenshot {

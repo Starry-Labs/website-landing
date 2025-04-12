@@ -30,7 +30,7 @@ const Navbar: React.FC = () => {
           <Link href="/">
             <div className="cursor-pointer">
               <Image
-                src="/images/starry-logo.svg"
+                src="/images/starry-logo.png"
                 alt="Starry Logo"
                 width={120}
                 height={40}

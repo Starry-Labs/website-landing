@@ -1,7 +1,8 @@
+"use client";
+
 import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { Testimonial } from "../types";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { Testimonial } from "@/types";
 
 interface TestimonialSliderProps {
   testimonials: Testimonial[];
@@ -28,18 +29,22 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
     setCurrentIndex(newIndex);
   };
 
-  const variants = {
+  // Define animation variants with proper types
+  const sliderVariants: Variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 1000 : -1000,
       opacity: 0,
+      position: "absolute",
     }),
     center: {
       x: 0,
       opacity: 1,
+      position: "relative",
     },
     exit: (direction: number) => ({
       x: direction > 0 ? -1000 : 1000,
       opacity: 0,
+      position: "absolute",
     }),
   };
 
@@ -47,12 +52,12 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
     <div id="testimonials" className="relative max-w-4xl mx-auto">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-indigo-600/10 blur-3xl -z-10 rounded-full"></div>
 
-      <div className="relative overflow-hidden">
-        <AnimatePresence initial={false} custom={direction}>
+      <div className="relative overflow-hidden min-h-[300px]">
+        <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentIndex}
             custom={direction}
-            variants={variants}
+            variants={sliderVariants}
             initial="enter"
             animate="center"
             exit="exit"
@@ -60,14 +65,9 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
               x: { type: "spring", stiffness: 300, damping: 30 },
               opacity: { duration: 0.5 },
             }}
-            className="bg-[#1a1950] rounded-2xl p-8 md:p-12 shadow-xl"
+            className="w-full bg-[#1a1950] rounded-2xl p-8 md:p-12 shadow-xl absolute inset-0"
           >
             <div className="flex flex-col">
-              {/* Quote marks */}
-              <div className="text-6xl text-purple-400 opacity-20 leading-none mb-4">
-                &quot;
-              </div>
-
               {/* Testimonial text */}
               <p className="text-lg md:text-xl mb-8 text-white/90 italic">
                 {testimonials[currentIndex].quote}
@@ -75,14 +75,14 @@ const TestimonialSlider: React.FC<TestimonialSliderProps> = ({
 
               {/* Author info */}
               <div className="flex items-center mt-auto">
-                <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
+                {/* <div className="relative w-12 h-12 rounded-full overflow-hidden mr-4">
                   <Image
                     src={testimonials[currentIndex].avatar}
                     alt={testimonials[currentIndex].name}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: "cover" }}
                   />
-                </div>
+                </div> */}
                 <div>
                   <div className="font-medium">
                     {testimonials[currentIndex].name}

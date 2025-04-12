@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
             <Link href="/">
               <div className="mb-4 cursor-pointer">
                 <Image
-                  src="/images/starry-logo.svg"
+                  src="/images/starry-logo.png"
                   alt="Starry Logo"
                   width={140}
                   height={45}

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { Moon, Sun, Network, MessageCircle } from "lucide-react";
 
 // Components
 import Navbar from "@/components/Navbar";
@@ -19,49 +20,49 @@ import PricingSection from "@/components/PricingSection";
 import CTASection from "@/components/CTASection";
 
 // Types and Data
-import { Feature, AppScreenshot, Testimonial } from "@/types/index";
+import { Testimonial } from "@/types";
 import { sampleBirthChart } from "@/data/sampleBirthChart";
 
-// Feature data
-const features: Feature[] = [
+// Feature data with Lucide icons
+const features = [
   {
     id: 1,
     title: "AI-Powered Natal Chart Analysis",
     description:
       "Comprehensive personal chart analysis incorporating planetary aspects, trained on verified astrological data.",
-    icon: "/icons/ai-analysis.svg",
+    icon: <Moon className="w-10 h-10 text-blue-400" />,
   },
   {
     id: 2,
     title: "Decentralized Knowledge Platform",
     description:
       "Community-contributed intelligence drawing from diverse astrological traditions with transparent validation.",
-    icon: "/icons/decentralized.svg",
+    icon: <Network className="w-10 h-10 text-green-400" />,
   },
   {
     id: 3,
     title: "Advanced Relationship Analysis",
     description:
       "Marks chart implementation for analyzing relationship dynamics across friendship, romantic, and professional contexts.",
-    icon: "/icons/relationship.svg",
+    icon: <Sun className="w-10 h-10 text-orange-400" />,
   },
   {
     id: 4,
     title: "AI Astrology Guidance",
     description:
       "Personal agent built on a decentralized knowledge base providing context-aware astrological insights.",
-    icon: "/icons/guidance.svg",
+    icon: <MessageCircle className="w-10 h-10 text-yellow-400" />,
   },
-  {
-    id: 5,
-    title: "Privacy Protection",
-    description:
-      "Birth data is highly sensitive information. Our zkSBT technology ensures your personal details remain protected.",
-    icon: "/icons/privacy.svg",
-  },
+  // {
+  //   id: 5,
+  //   title: "Privacy Protection",
+  //   description:
+  //     "Birth data is highly sensitive information. Our zkSBT technology ensures your personal details remain protected.",
+  //   icon: ShieldCheck,
+  // },
 ];
 
-const appScreenshots: AppScreenshot[] = [
+const appScreenshots = [
   {
     id: 1,
     title: "Personal Chart Analysis",
@@ -126,15 +127,7 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="mb-8"
-          >
-            <Image
-              src="/images/starry-logo.svg"
-              alt="Starry Logo"
-              width={280}
-              height={100}
-              priority
-            />
-          </motion.div>
+          ></motion.div>
 
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
@@ -209,22 +202,29 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature) => (
-              <FeatureCard key={feature.id} feature={feature} />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {features.map((feature, index) => (
+              <FeatureCard
+                key={feature.id}
+                title={feature.title}
+                description={feature.description}
+                icon={feature.icon}
+                index={index}
+              />
             ))}
           </div>
         </div>
       </section>
 
-      {/* Marks Chart Explanation */}
+      {/* More sections remain the same... */}
+      {/* Marks Chart Explanation Section */}
       <section className="py-20 bg-gradient-to-b from-[#0f0e33] to-[#151442]">
         <div className="container mx-auto px-4">
           <MarksChartExplainer />
         </div>
       </section>
 
-      {/* App Screenshots */}
+      {/* App Screenshots Section */}
       <section className="py-20 bg-[#151442]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -262,7 +262,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Birth Chart Generator */}
+      {/* Birth Chart Generator Section */}
       <section
         id="birth-chart"
         className="py-20 bg-gradient-to-b from-[#151442] to-[#0f0e33]"
@@ -322,7 +322,7 @@ export default function Home() {
       {/* Pricing Section */}
       <PricingSection />
 
-      {/* Testimonials */}
+      {/* Testimonials Section */}
       <section id="testimonials" className="py-20 bg-[#0f0e33]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -338,7 +338,7 @@ export default function Home() {
       {/* CTA Section */}
       <CTASection />
 
-      {/* Newsletter Signup */}
+      {/* Newsletter Signup Section */}
       <section className="py-20 bg-gradient-to-b from-[#0f0e33] to-[#151442]">
         <div className="container mx-auto px-4">
           <NewsletterSignup />
