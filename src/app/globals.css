@@ -38,6 +38,10 @@
   * {
     border-color: hsl(var(--border));
   }
+
+  html {
+    font-family: var(--font-playfair), serif;
+    }
   
   body {
     @apply bg-[#0f0e33] text-white font-sans;

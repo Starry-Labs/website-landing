@@ -22,6 +22,7 @@ export function formatDate(date: Date): string {
 /**
  * Throttles a function to limit how often it can be called
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function throttle<T extends (...args: any[]) => any>(
   func: T,
   limit: number
@@ -30,7 +31,7 @@ export function throttle<T extends (...args: any[]) => any>(
   let lastResult: ReturnType<T>;
 
   return function (
-    this: any,
+    this: unknown,
     ...args: Parameters<T>
   ): ReturnType<T> | undefined {
     if (!inThrottle) {

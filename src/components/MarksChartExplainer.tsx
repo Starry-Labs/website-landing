@@ -23,8 +23,6 @@ const MarksChartExplainer: React.FC = () => {
           <p>
             The Marks Chart is a revolutionary approach to relationship
             astrology that goes beyond basic compatibility comparisons.
-            Developed by renowned astrologer Sue, this technique provides deep
-            insights into interpersonal dynamics.
           </p>
 
           <p>
@@ -75,8 +73,8 @@ const MarksChartExplainer: React.FC = () => {
 
           <p className="mt-6">
             Starry is the only app that implements the complete Marks Chart
-            methodology, with Sue&apos;s expert guidance built into our AI
-            system.
+            methodology, with knowledge from professional astrologers and our
+            community built into our AI system.
           </p>
         </div>
       </motion.div>
